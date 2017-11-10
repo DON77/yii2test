@@ -285,4 +285,4 @@ For nginx:
 	
 
 	
-14)configure your mailing system. At this point all mails go to  /frontend/runtime/mail folder.
+14) configure your mailing system. At this point all mails go to  /frontend/runtime/mail folder.

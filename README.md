@@ -219,31 +219,43 @@ For nginx:
 	127.0.0.1   backend.dev
 	
 	
-6)run migrations - php yii migrate/up --migrationPath=@vendor/dektrium/yii2-user/migrations
+6) initialize app. Command : /path/to/php-bin/php /path/to/yii-application/init
 
-7) 
- 7.1) edit your /common/config/main.php file, by setting  'enableConfirmation'=>true.
+
+7) configure db. /common/config/main-local.php
+
+8) run migrations - php yii migrate/up --migrationPath=@vendor/dektrium/yii2-user/migrations
+
+
+9) edit your /common/config/main.php file, by setting  'enableConfirmation'=>true.
 			'modules' => [
 				'user' => [
 					'class' => 'dektrium\user\Module',
 					'enableConfirmation'=>false,
 				],
 			],
- 7.2) edit your /backend/config/main.php file, by setting  'enableConfirmation'=>true.
+			
+			
+10) edit your /backend/config/main.php file, by setting  'enableConfirmation'=>true.
 			'modules' => [
 				'user' => [
 					'class' => 'dektrium\user\Module',
 					'enableConfirmation'=>false,
 				],
 			],
- 7.4) edit your /frontend/config/main.php file, by setting  'enableConfirmation'=>true.( if set to false, confirmation mail will not be send )
+			
+			
+11) edit your /frontend/config/main.php file, by setting  'enableConfirmation'=>true.( if set to false, confirmation mail will not be send )
 			'modules' => [
 				'user' => [
 					'class' => 'dektrium\user\Module',
 					'enableConfirmation'=>false,
 				],
 			],
-8) edit facebook auth configs in /frontend/config/main.php file
+			
+			
+			
+12) edit facebook auth configs in /frontend/config/main.php file
 			'authClientCollection' => [
 				'class'   => \yii\authclient\Collection::className(),
 				'clients' => [
@@ -256,5 +268,21 @@ For nginx:
 			],
 			
 	note that you should also edit your redirectional urls in facebook developer dashboard.
+
 	
-9)configure your mailing system. At this point all mails go to  /frontend/runtime/mail folder.
+13) specify admin users in /frontend/config/main.php && /backend/config/main.php files
+		modules' => [
+			'user' => [
+				'as backend' => 'dektrium\user\filters\BackendFilter',
+				'enableConfirmation'=>false,
+				'admins' => ['admin']
+			],
+		],
+
+			
+	by default admin users username is 'admin', you can add as much as you want.
+	
+	
+
+	
+14)configure your mailing system. At this point all mails go to  /frontend/runtime/mail folder.

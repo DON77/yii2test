@@ -23,6 +23,14 @@ return [
         'request' => [
             'csrfParam' => '_csrf-backend',
         ],
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@dektrium/user/views' => '@backend/views/user'
+                ],
+            ],
+        ],
+
 //        'user' => [
 //            'identityClass' => 'common\models\User',
 //            'enableAutoLogin' => true,
